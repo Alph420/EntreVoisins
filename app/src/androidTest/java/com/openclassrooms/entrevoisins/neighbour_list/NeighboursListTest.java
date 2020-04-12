@@ -1,14 +1,18 @@
 package com.openclassrooms.entrevoisins.neighbour_list;
 
+import android.support.test.espresso.UiController;
+import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.view.View;
 
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.ui.neighbour_list.ListNeighbourActivity;
 import com.openclassrooms.entrevoisins.utils.DeleteViewAction;
 
+import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -24,12 +28,12 @@ import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.hasChildCount;
 import static android.support.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 /**
@@ -82,6 +86,7 @@ public class NeighboursListTest {
     public void myNeighboursNameIsNotEmpty() {
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).perform(actionOnItemAtPosition(0, click()));
 
+
         onView(ViewMatchers.withId(R.id.neighbour_name)).
                 check(matches(withText("Caroline")));
     }
@@ -98,8 +103,25 @@ public class NeighboursListTest {
 
         onView(ViewMatchers.withId(R.id.main_content)).perform(swipeLeft());
 
-        onView(allOf(withId(2131230835))).check(matches(hasChildCount(1)));
+        onView(isRoot()).perform(waitFor(1000));
 
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).check(matches(hasChildCount(1)));
+
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).
+                perform(actionOnItemAtPosition(0, click()));
+
+        onView(ViewMatchers.withId(R.id.button_Favorites)).
+                perform(click());
+
+        onView(ViewMatchers.withId(R.id.back_button)).perform(click());
+
+        onView(isRoot()).perform(waitFor(1000));
+
+        onView(ViewMatchers.withId(R.id.main_content)).perform(swipeLeft());
+
+        onView(isRoot()).perform(waitFor(1000));
+
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).check(matches(hasChildCount(0)));
     }
 
 
@@ -115,5 +137,28 @@ public class NeighboursListTest {
                 .perform(actionOnItemAtPosition(1, new DeleteViewAction()));
         // Then : the number of element is 11
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).check(withItemCount(ITEMS_COUNT - 1));
+    }
+
+
+    /**
+     * Perform action of waiting for a specific time.
+     */
+    public static ViewAction waitFor(final long millis) {
+        return new ViewAction() {
+            @Override
+            public Matcher<View> getConstraints() {
+                return isRoot();
+            }
+
+            @Override
+            public String getDescription() {
+                return "Wait for " + millis + " milliseconds.";
+            }
+
+            @Override
+            public void perform(UiController uiController, final View view) {
+                uiController.loopMainThreadForAtLeast(millis);
+            }
+        };
     }
 }
