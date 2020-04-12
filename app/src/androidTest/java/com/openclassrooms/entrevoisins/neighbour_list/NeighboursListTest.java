@@ -1,5 +1,6 @@
 package com.openclassrooms.entrevoisins.neighbour_list;
 
+import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -13,6 +14,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
@@ -93,10 +95,8 @@ public class NeighboursListTest {
 
        onView(ViewMatchers.withId(R.id.main_content)).perform(swipeLeft());
 
-        onView(allOf(withId(R.id.list_neighbours), isDisplayed())).check(matches(isDisplayed()));
-
-        onView(allOf(withId(R.id.list_neighbours), isDisplayed())).check(withItemCount(1));
-
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).
+                perform(actionOnItemAtPosition(0, click()));
 
     }
 
