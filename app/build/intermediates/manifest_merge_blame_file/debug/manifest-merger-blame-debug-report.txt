@@ -1,0 +1,70 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.openclassrooms.entrevoisins"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:5:22-64
+12
+13    <application
+13-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:7:5-35:19
+14        android:allowBackup="true"
+14-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:8:9-35
+15        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+15-->[com.android.support:support-compat:28.0.0] F:\AndroidStudio\plugins\gradle\lib\caches\transforms-2\files-2.1\4e7b3bbed8e6e29e2ba6d4fc6e8eccff\support-compat-28.0.0\AndroidManifest.xml:22:18-91
+16        android:debuggable="true"
+17        android:icon="@mipmap/ic_launcher"
+17-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:9:9-43
+18        android:label="@string/app_name"
+18-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:10:9-41
+19        android:networkSecurityConfig="@xml/network_security_config"
+19-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:11:9-69
+20        android:roundIcon="@mipmap/ic_launcher_round"
+20-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:12:9-54
+21        android:supportsRtl="true"
+21-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:13:9-35
+22        android:testOnly="true"
+23        android:theme="@style/AppTheme" >
+23-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:14:9-40
+24        <activity
+24-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:16:9-17:59
+25            android:name="com.openclassrooms.entrevoisins.ui.neighbour_list.ActivityProfileNeighbours"
+25-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:16:19-78
+26            android:theme="@style/AppTheme.NoActionBar" />
+26-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:17:13-56
+27        <activity
+27-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:20:9-22:62
+28            android:name="com.openclassrooms.entrevoisins.ui.neighbour_list.AddNeighbourActivity"
+28-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:21:13-67
+29            android:label="@string/activity_new_neighbour" />
+29-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:22:13-59
+30        <activity
+30-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:25:9-34:20
+31            android:name="com.openclassrooms.entrevoisins.ui.neighbour_list.ListNeighbourActivity"
+31-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:26:13-68
+32            android:label="@string/app_name"
+32-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:27:13-45
+33            android:theme="@style/AppTheme.NoActionBar" >
+33-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:28:13-56
+34            <intent-filter>
+34-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:29:13-33:29
+35                <action android:name="android.intent.action.MAIN" />
+35-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:30:17-69
+35-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:30:25-66
+36
+37                <category android:name="android.intent.category.LAUNCHER" />
+37-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:32:17-77
+37-->C:\Users\jujugeeksdu59\Documents\OpenClassRoom\Prep'Android\Projet3\Entrevoisins\app\src\main\AndroidManifest.xml:32:27-74
+38            </intent-filter>
+39        </activity>
+40    </application>
+41
+42</manifest>
