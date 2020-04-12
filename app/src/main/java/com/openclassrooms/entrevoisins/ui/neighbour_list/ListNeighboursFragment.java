@@ -66,11 +66,8 @@ public class ListNeighboursFragment extends Fragment {
      * Init the List of neighbours
      */
     private void initList() {
-        if (pos == 0) {
-            mNeighbours = mApiService.getNeighbours();
-        } else {
-            mNeighbours = mApiService.getFavoritesNeighbour();
-        }
+        if (pos == 0) mNeighbours = mApiService.getNeighbours();
+        else mNeighbours = mApiService.getFavoritesNeighbour();
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
     }
 
