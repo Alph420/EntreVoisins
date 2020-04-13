@@ -1,18 +1,13 @@
 package com.openclassrooms.entrevoisins.neighbour_list;
 
-import android.support.test.espresso.UiController;
-import android.support.test.espresso.ViewAction;
-import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.view.View;
 
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.ui.neighbour_list.ListNeighbourActivity;
 import com.openclassrooms.entrevoisins.utils.DeleteViewAction;
 
-import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -20,18 +15,16 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.swipeLeft;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
-import static android.support.test.espresso.matcher.ViewMatchers.Visibility.VISIBLE;
 import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.hasChildCount;
 import static android.support.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
+
+import static android.support.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.core.IsNull.notNullValue;
@@ -63,7 +56,7 @@ public class NeighboursListTest {
     @Test
     public void myNeighboursList_shouldNotBeEmpty() {
         // First scroll to the position that needs to be matched and click on it.
-        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed()))
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed()))
                 .check(matches(hasMinimumChildCount(1)));
     }
 
@@ -73,7 +66,7 @@ public class NeighboursListTest {
     @Test
     public void myActivityIsProfileNeighbours() {
 
-        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).
                 perform(actionOnItemAtPosition(1, click()));
 
         onView(ViewMatchers.withId(R.id.neighbour_picture)).check(matches(isDisplayed()));
@@ -84,7 +77,7 @@ public class NeighboursListTest {
      */
     @Test
     public void myNeighboursNameIsNotEmpty() {
-        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).perform(actionOnItemAtPosition(0, click()));
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).perform(actionOnItemAtPosition(0, click()));
 
 
         onView(ViewMatchers.withId(R.id.neighbour_name)).
@@ -92,36 +85,41 @@ public class NeighboursListTest {
     }
 
     @Test
-    public void neighboursInFavoritesListIsOnlyFavoritesNeighbours() {
-        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).
+    public void neighboursInFavoritesListIsOnlyFavoritesNeighbours(){
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).
                 perform(actionOnItemAtPosition(0, click()));
 
         onView(ViewMatchers.withId(R.id.button_Favorites)).
                 perform(click());
 
-        onView(ViewMatchers.withId(R.id.back_button)).perform(click());
+        onView(ViewMatchers.withId(R.id.back_button)).
+                perform(click());
 
-        onView(ViewMatchers.withId(R.id.main_content)).perform(swipeLeft());
+        onView(allOf(withContentDescription("Favorites"), isDisplayed())).perform(click());
 
-        onView(isRoot()).perform(waitFor(1000));
+        onView(ViewMatchers.withId(R.id.main_content)).check(matches(isDisplayed()));
 
-        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).check(matches(hasChildCount(1)));
+        onView(ViewMatchers.withId(R.id.main_content)).check(matches(isCompletelyDisplayed()));
 
-        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isCompletelyDisplayed())).check(matches(hasChildCount(1)));
+
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).
                 perform(actionOnItemAtPosition(0, click()));
 
         onView(ViewMatchers.withId(R.id.button_Favorites)).
                 perform(click());
 
-        onView(ViewMatchers.withId(R.id.back_button)).perform(click());
+        onView(ViewMatchers.withId(R.id.back_button)).
+                perform(click());
 
-        onView(isRoot()).perform(waitFor(1000));
+        onView(allOf(withContentDescription("Favorites"), isDisplayed())).perform(click());
 
-        onView(ViewMatchers.withId(R.id.main_content)).perform(swipeLeft());
+        onView(ViewMatchers.withId(R.id.main_content)).check(matches(isDisplayed()));
 
-        onView(isRoot()).perform(waitFor(1000));
+        onView(ViewMatchers.withId(R.id.main_content)).check(matches(isCompletelyDisplayed()));
 
-        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).check(matches(hasChildCount(0)));
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isCompletelyDisplayed())).check(matches(hasChildCount(0)));
+
     }
 
 
@@ -131,34 +129,11 @@ public class NeighboursListTest {
     @Test
     public void myNeighboursList_deleteAction_shouldRemoveItem() {
         // Given : We remove the element at position 2
-        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).check(withItemCount(ITEMS_COUNT));
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).check(withItemCount(ITEMS_COUNT));
         // When perform a click on a delete icon
-        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed()))
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed()))
                 .perform(actionOnItemAtPosition(1, new DeleteViewAction()));
         // Then : the number of element is 11
-        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isDisplayed())).check(withItemCount(ITEMS_COUNT - 1));
-    }
-
-
-    /**
-     * Perform action of waiting for a specific time.
-     */
-    public static ViewAction waitFor(final long millis) {
-        return new ViewAction() {
-            @Override
-            public Matcher<View> getConstraints() {
-                return isRoot();
-            }
-
-            @Override
-            public String getDescription() {
-                return "Wait for " + millis + " milliseconds.";
-            }
-
-            @Override
-            public void perform(UiController uiController, final View view) {
-                uiController.loopMainThreadForAtLeast(millis);
-            }
-        };
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).check(withItemCount(ITEMS_COUNT - 1));
     }
 }
