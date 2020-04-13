@@ -86,14 +86,11 @@ public class NeighboursListTest {
 
     @Test
     public void neighboursInFavoritesListIsOnlyFavoritesNeighbours(){
-        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).
-                perform(actionOnItemAtPosition(0, click()));
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).perform(actionOnItemAtPosition(0, click()));
 
-        onView(ViewMatchers.withId(R.id.button_Favorites)).
-                perform(click());
+        onView(ViewMatchers.withId(R.id.button_Favorites)).perform(click());
 
-        onView(ViewMatchers.withId(R.id.back_button)).
-                perform(click());
+        onView(ViewMatchers.withId(R.id.back_button)).perform(click());
 
         onView(allOf(withContentDescription("Favorites"), isDisplayed())).perform(click());
 
@@ -106,11 +103,9 @@ public class NeighboursListTest {
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).
                 perform(actionOnItemAtPosition(0, click()));
 
-        onView(ViewMatchers.withId(R.id.button_Favorites)).
-                perform(click());
+        onView(ViewMatchers.withId(R.id.button_Favorites)).perform(click());
 
-        onView(ViewMatchers.withId(R.id.back_button)).
-                perform(click());
+        onView(ViewMatchers.withId(R.id.back_button)).perform(click());
 
         onView(allOf(withContentDescription("Favorites"), isDisplayed())).perform(click());
 
@@ -121,7 +116,6 @@ public class NeighboursListTest {
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isCompletelyDisplayed())).check(matches(hasChildCount(0)));
 
     }
-
 
     /**
      * When we delete an item, the item is no more shown
