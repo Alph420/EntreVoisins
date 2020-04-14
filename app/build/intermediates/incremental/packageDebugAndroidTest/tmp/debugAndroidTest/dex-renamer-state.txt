@@ -1,4 +1,4 @@
-#Tue Apr 14 16:01:38 CEST 2020
+#Tue Apr 14 16:03:24 CEST 2020
 base.0=C\:\\Users\\jujugeeksdu59\\Documents\\OpenClassRoom\\Prep'Android\\Projet3\\Entrevoisins\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeExtDexDebugAndroidTest\\out\\classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex
