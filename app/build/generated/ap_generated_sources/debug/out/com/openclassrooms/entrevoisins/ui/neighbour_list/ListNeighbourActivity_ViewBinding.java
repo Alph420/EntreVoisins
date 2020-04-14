@@ -14,18 +14,13 @@ import com.openclassrooms.entrevoisins.R;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
-public class ListNeighbourActivity_ViewBinding implements Unbinder {
-  private ListNeighbourActivity target;
+public class ListNeighbourActivity_ViewBinding<T extends ListNeighbourActivity> implements Unbinder {
+  protected T target;
 
-  private View view7f08001d;
-
-  @UiThread
-  public ListNeighbourActivity_ViewBinding(ListNeighbourActivity target) {
-    this(target, target.getWindow().getDecorView());
-  }
+  private View view2131230749;
 
   @UiThread
-  public ListNeighbourActivity_ViewBinding(final ListNeighbourActivity target, View source) {
+  public ListNeighbourActivity_ViewBinding(final T target, View source) {
     this.target = target;
 
     View view;
@@ -33,7 +28,7 @@ public class ListNeighbourActivity_ViewBinding implements Unbinder {
     target.mToolbar = Utils.findRequiredViewAsType(source, R.id.toolbar, "field 'mToolbar'", Toolbar.class);
     target.mViewPager = Utils.findRequiredViewAsType(source, R.id.container, "field 'mViewPager'", ViewPager.class);
     view = Utils.findRequiredView(source, R.id.add_neighbour, "method 'addNeighbour'");
-    view7f08001d = view;
+    view2131230749 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -45,15 +40,16 @@ public class ListNeighbourActivity_ViewBinding implements Unbinder {
   @Override
   @CallSuper
   public void unbind() {
-    ListNeighbourActivity target = this.target;
+    T target = this.target;
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
-    this.target = null;
 
     target.mTabLayout = null;
     target.mToolbar = null;
     target.mViewPager = null;
 
-    view7f08001d.setOnClickListener(null);
-    view7f08001d = null;
+    view2131230749.setOnClickListener(null);
+    view2131230749 = null;
+
+    this.target = null;
   }
 }

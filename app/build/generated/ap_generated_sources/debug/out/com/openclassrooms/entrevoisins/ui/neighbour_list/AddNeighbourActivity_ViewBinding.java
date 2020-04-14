@@ -14,18 +14,13 @@ import com.openclassrooms.entrevoisins.R;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
-public class AddNeighbourActivity_ViewBinding implements Unbinder {
-  private AddNeighbourActivity target;
+public class AddNeighbourActivity_ViewBinding<T extends AddNeighbourActivity> implements Unbinder {
+  protected T target;
 
-  private View view7f08003f;
-
-  @UiThread
-  public AddNeighbourActivity_ViewBinding(AddNeighbourActivity target) {
-    this(target, target.getWindow().getDecorView());
-  }
+  private View view2131230783;
 
   @UiThread
-  public AddNeighbourActivity_ViewBinding(final AddNeighbourActivity target, View source) {
+  public AddNeighbourActivity_ViewBinding(final T target, View source) {
     this.target = target;
 
     View view;
@@ -36,7 +31,7 @@ public class AddNeighbourActivity_ViewBinding implements Unbinder {
     target.aboutMeInput = Utils.findRequiredViewAsType(source, R.id.aboutMeLyt, "field 'aboutMeInput'", TextInputLayout.class);
     view = Utils.findRequiredView(source, R.id.create, "field 'addButton' and method 'addNeighbour'");
     target.addButton = Utils.castView(view, R.id.create, "field 'addButton'", MaterialButton.class);
-    view7f08003f = view;
+    view2131230783 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -48,9 +43,8 @@ public class AddNeighbourActivity_ViewBinding implements Unbinder {
   @Override
   @CallSuper
   public void unbind() {
-    AddNeighbourActivity target = this.target;
+    T target = this.target;
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
-    this.target = null;
 
     target.avatar = null;
     target.nameInput = null;
@@ -59,7 +53,9 @@ public class AddNeighbourActivity_ViewBinding implements Unbinder {
     target.aboutMeInput = null;
     target.addButton = null;
 
-    view7f08003f.setOnClickListener(null);
-    view7f08003f = null;
+    view2131230783.setOnClickListener(null);
+    view2131230783 = null;
+
+    this.target = null;
   }
 }

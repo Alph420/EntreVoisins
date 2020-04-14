@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\jujugeeksdu59\\Documents\\OpenClassRoom\\Prep'Android\\Projet3\\Entrevoisins\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\jujugeeksdu59\\Documents\\OpenClassRoom\\Prep'Android\\Projet3\\Entrevoisins\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
-    },
-    {
         "merged": "C:\\Users\\jujugeeksdu59\\Documents\\OpenClassRoom\\Prep'Android\\Projet3\\Entrevoisins\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_list_neighbour.xml.flat",
         "source": "C:\\Users\\jujugeeksdu59\\Documents\\OpenClassRoom\\Prep'Android\\Projet3\\Entrevoisins\\app\\src\\main\\res\\layout\\activity_list_neighbour.xml"
+    },
+    {
+        "merged": "C:\\Users\\jujugeeksdu59\\Documents\\OpenClassRoom\\Prep'Android\\Projet3\\Entrevoisins\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\jujugeeksdu59\\Documents\\OpenClassRoom\\Prep'Android\\Projet3\\Entrevoisins\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\jujugeeksdu59\\Documents\\OpenClassRoom\\Prep'Android\\Projet3\\Entrevoisins\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",

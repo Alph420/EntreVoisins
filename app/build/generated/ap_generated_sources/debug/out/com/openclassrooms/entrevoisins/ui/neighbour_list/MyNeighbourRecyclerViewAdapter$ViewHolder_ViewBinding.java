@@ -13,12 +13,11 @@ import com.openclassrooms.entrevoisins.R;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
-public class MyNeighbourRecyclerViewAdapter$ViewHolder_ViewBinding implements Unbinder {
-  private MyNeighbourRecyclerViewAdapter.ViewHolder target;
+public class MyNeighbourRecyclerViewAdapter$ViewHolder_ViewBinding<T extends MyNeighbourRecyclerViewAdapter.ViewHolder> implements Unbinder {
+  protected T target;
 
   @UiThread
-  public MyNeighbourRecyclerViewAdapter$ViewHolder_ViewBinding(
-      MyNeighbourRecyclerViewAdapter.ViewHolder target, View source) {
+  public MyNeighbourRecyclerViewAdapter$ViewHolder_ViewBinding(T target, View source) {
     this.target = target;
 
     target.mNeighbourAvatar = Utils.findRequiredViewAsType(source, R.id.item_list_avatar, "field 'mNeighbourAvatar'", ImageView.class);
@@ -29,12 +28,13 @@ public class MyNeighbourRecyclerViewAdapter$ViewHolder_ViewBinding implements Un
   @Override
   @CallSuper
   public void unbind() {
-    MyNeighbourRecyclerViewAdapter.ViewHolder target = this.target;
+    T target = this.target;
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
-    this.target = null;
 
     target.mNeighbourAvatar = null;
     target.mNeighbourName = null;
     target.mDeleteButton = null;
+
+    this.target = null;
   }
 }

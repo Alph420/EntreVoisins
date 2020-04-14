@@ -79,13 +79,12 @@ public class NeighboursListTest {
     public void myNeighboursNameIsNotEmpty() {
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).perform(actionOnItemAtPosition(0, click()));
 
-
         onView(ViewMatchers.withId(R.id.neighbour_name)).
                 check(matches(withText("Caroline")));
     }
 
     @Test
-    public void neighboursInFavoritesListIsOnlyFavoritesNeighbours(){
+    public void neighboursInFavoritesListIsOnlyFavoritesNeighbours() {
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).perform(actionOnItemAtPosition(0, click()));
 
         onView(ViewMatchers.withId(R.id.button_Favorites)).perform(click());
@@ -98,7 +97,7 @@ public class NeighboursListTest {
 
         onView(ViewMatchers.withId(R.id.main_content)).check(matches(isCompletelyDisplayed()));
 
-        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isCompletelyDisplayed())).check(matches(hasChildCount(1)));
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).check(matches(hasChildCount(1)));
 
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).
                 perform(actionOnItemAtPosition(0, click()));
@@ -113,7 +112,8 @@ public class NeighboursListTest {
 
         onView(ViewMatchers.withId(R.id.main_content)).check(matches(isCompletelyDisplayed()));
 
-        onView(allOf(ViewMatchers.withId(R.id.list_neighbours),isCompletelyDisplayed())).check(matches(hasChildCount(0)));
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).check(matches(hasChildCount(0)));
+
 
     }
 
